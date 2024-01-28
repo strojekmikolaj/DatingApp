@@ -19,7 +19,7 @@ export class AccountService {
       map((response: User) => {
         if (response) {
           localStorage.setItem('user', JSON.stringify(response));
-          this.setCurrentUser(response);
+          this.currentUserSource.next(response);
         }
       })
     );
@@ -27,6 +27,7 @@ export class AccountService {
 
   public logout() {
     localStorage.removeItem('user');
+    this.currentUserSource.next(null);
   }
 
   public register(model: any): Observable<void> {
