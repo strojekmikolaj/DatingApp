@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -14,15 +13,15 @@ export class NavComponent {
 
   public constructor(
     public readonly accountService: AccountService,
+    private readonly router: Router,
     private readonly toastr: ToastrService
   ) {}
 
   public login(): void {
     this.accountService.login(this.model).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
+        this.router.navigateByUrl('/members');
       },
-      error: (errorObj) => this.toastr.error(errorObj.error),
     });
   }
 
