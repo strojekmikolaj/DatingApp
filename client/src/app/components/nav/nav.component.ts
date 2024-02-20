@@ -9,6 +9,7 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent {
+  public defaultPhoto = './assets/user.png';
   public model: any = {};
 
   public constructor(
