@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using API.DTOs;
+using AutoMapper;
 
 namespace API;
 
@@ -11,5 +12,6 @@ public class AutoMapperProfiles : Profile
         .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
         CreateMap<Photo, PhotoDTO>();
         CreateMap<MemberUpdateDTO, AppUser>();
+        CreateMap<RegisterDTO, AppUser>();
     }
 }
